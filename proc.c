@@ -496,6 +496,25 @@ kill(int pid)
   return -1;
 }
 
+// Creo la función sys_getprocs
+int
+sys_getprocs(void)
+{
+	int max;
+	int NumProcesos = 0;
+	struct proc *ptr = ptable.proc;
+	for (; ptr < &ptable.proc[NPROC]; ptr++) {
+		if (!(ptr->state == UNUSED)) {
+			continue;
+		}
+		else if (!(ptr->state == ZOMBIE)) {
+			continue;
+		}
+		NumProcesos++;
+	}
+	return NumProcesos;
+}
+
 //PAGEBREAK: 36
 // Print a process listing to console.  For debugging.
 // Runs when user types ^P on console.
