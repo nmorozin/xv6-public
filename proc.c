@@ -500,7 +500,6 @@ kill(int pid)
 int
 sys_getprocs(void)
 {
-	int max;
 	int NumProcesos = 0;
 	struct proc *ptr = ptable.proc;
 	for (; ptr < &ptable.proc[NPROC]; ptr++) {
